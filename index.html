@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <meta name="keywords" content="博客,笔记">
+    <meta name="description" content="记录、思考与分享。">
+    <title>鼠的博客</title>
+    <link rel="stylesheet" href="/assets/style.css?v=1795057758">
+    <style id="layoutVars">:root{--shell-w:78em;--side-w:21em;--col-gap:2.8em;--block-gap:1.4em;--card-gap:1.8em;--font-size:18px;--line-height:2;}</style>
+    <script>if(localStorage.getItem("theme")==="dark")document.documentElement.classList.add("dark");if(localStorage.getItem("sidebar")==="hidden")document.documentElement.classList.add("sidebar-hidden")</script>
+</head>
+<body>
+    <div class="page-shell">
+        <nav class="topbar reveal">
+            <a class="topbar-link ripple active" href="/">主页</a>
+            <a class="topbar-link ripple" href="/pages/%E4%BD%9C%E5%93%81%E9%9B%86/">作品集</a>
+            <a class="topbar-link ripple" href="/pages/%E6%84%BF%E6%9C%9B/">愿望</a>
+            <a class="topbar-link ripple" href="/pages/%E9%9F%B3%E4%B9%90/">音乐</a>
+            <a class="topbar-link ripple" href="/pages/%E7%94%9F%E7%89%A9%E9%92%9F/">生物钟</a>
+            <a class="topbar-link ripple" href="/pages/%E8%81%94%E7%B3%BB%E6%96%B9%E5%BC%8F/">联系方式</a>
+            <a class="topbar-link ripple" href="/pages/%E5%85%B3%E4%BA%8E/">关于</a>
+            <a class="topbar-link ripple" href="/pages/%E6%A0%91%E6%B4%9E/">树洞</a>
+            <button class="topbar-link ripple" id="random" type="button">随机一篇</button>
+        </nav>
+        <div class="layout" data-side="right">
+            <main class="main" id="mainZone">
+                
+<header class="hero reveal" data-block="hero">
+            <h1 class="site-title"><a href="/">鼠的博客</a></h1>
+            <p class="site-desc">记录、思考与分享。</p>
+        </header>
+<div class="widget-essays" data-block="essays">
+            <p class="section-label reveal">最近文章</p>
+            <section class="essays" id="essays"></section>
+            <nav class="pager reveal">
+                <button class="btn ripple" type="button" data-go="first">首页</button>
+                <button class="btn ripple" type="button" data-go="prev">上一页</button>
+                <span class="page-info" id="pageInfo"></span>
+                <button class="btn ripple" type="button" data-go="next">下一页</button>
+                <button class="btn ripple" type="button" data-go="last">尾页</button>
+            </nav>
+        </div>
+<div class="bar reveal" id="workBar" data-block="works">
+            <div class="bar-head">
+                <span class="bar-label">作品集</span>
+                <a class="bar-more ripple" href="/pages/%E4%BD%9C%E5%93%81%E9%9B%86/">全部 →</a>
+            </div>
+            <div class="work-list">
+                <a class="work-item ripple" href="/pages/%E4%BD%9C%E5%93%81%E9%9B%86/">
+                    <div class="work-top"><strong>AE Practice</strong><span class="work-tag">技术栈</span></div>
+                    <p class="work-desc">最近在学AE，做了点小作品</p>
+                </a><a class="work-item ripple" href="/pages/%E4%BD%9C%E5%93%81%E9%9B%86/">
+                    <div class="work-top"><strong>代码方面的内容都不算作品</strong><span class="work-tag">技术栈</span></div>
+                    <p class="work-desc">因为我很小就写代码搞作品了，太多了数不过来</p>
+                </a>
+            </div>
+        </div>
+
+
+            </main>
+            
+    <aside class="sidebar home-side" id="sidebar">
+<div class="bar reveal" id="archiveBar" data-block="archive">
+            <div class="bar-head">
+                <span class="bar-label">按日期归档</span>
+            </div>
+            <div id="archive"></div>
+        </div>
+<div class="bar bar-music reveal" id="musicBar" data-block="music">
+            <div class="bar-head">
+                <div class="music-title-wrap">
+                    <span class="music-bars" aria-hidden="true"><i></i><i></i><i></i></span>
+                    <span class="bar-label">喜好 · 音乐</span>
+                    <span class="music-tag" id="musicTag"></span>
+                </div>
+                <div class="bar-right">
+                    <button class="bar-action ripple" id="musicNext" type="button">换一首</button>
+                    <a class="bar-more ripple" href="/pages/%E9%9F%B3%E4%B9%90/">歌单 →</a>
+                </div>
+            </div>
+            <div class="music-body" id="musicBody">
+                <strong class="music-track" id="musicTrack"></strong>
+                <span class="music-note" id="musicNote"></span>
+            </div>
+        </div>
+<div class="bar bar-clock reveal" id="clockBar" data-block="clock">
+            <div class="bar-head">
+                <div class="clock-status">
+                    <span class="clock-dot" id="clockDot"></span>
+                    <span class="bar-label">生物钟</span>
+                    <span class="clock-badge" id="clockBadge">读取中</span>
+                </div>
+                <div class="bar-right">
+                    <span class="clock-time" id="clockTime">--:--</span>
+                    <a class="bar-more ripple" href="/pages/%E7%94%9F%E7%89%A9%E9%92%9F/">作息表 →</a>
+                </div>
+            </div>
+            <p class="clock-mood" id="clockMood"></p>
+            <div class="clock-track" id="clockTrack">
+                <div class="clock-seg" data-tone="rest" style="width:31.25%" title="00:00–07:30 睡眠休息：离线充电中"></div><div class="clock-seg" data-tone="wake" style="width:6.25%" title="07:30–09:00 早间唤醒：刚醒 / 吃早饭"></div><div class="clock-seg" data-tone="focus" style="width:12.5%" title="09:00–12:00 上午专注：写代码 / 学习"></div><div class="clock-seg" data-tone="break" style="width:8.333%" title="12:00–14:00 午间小憩：午饭与休息"></div><div class="clock-seg" data-tone="focus" style="width:18.75%" title="14:00–18:30 下午创作：折腾项目 / 写东西"></div><div class="clock-seg" data-tone="chill" style="width:20.833%" title="18:30–23:30 夜间自由：听歌 / 散步 / 摸鱼"></div><div class="clock-seg" data-tone="rest" style="width:2.083%" title="23:30–24:00 准备睡觉：关灯酝酿睡意"></div>
+                <span class="clock-now" id="clockNow"></span>
+            </div>
+            <div class="clock-scale">
+                <span>00</span><span>06</span><span>12</span><span>18</span><span>24</span>
+            </div>
+        </div>
+<div class="bar reveal" id="wishBar" data-block="wishes">
+            <div class="bar-head">
+                <span class="bar-label">愿望（想要）</span>
+                <a class="bar-more ripple" href="/pages/%E6%84%BF%E6%9C%9B/">全部 →</a>
+            </div>
+            <ul class="wish-list">
+                <li class="wish-item done"><span class="wish-box">✓</span><span>把新博客搭起来并持续写下去</span></li><li class="wish-item"><span class="wish-box"></span><span>生物钟维稳，最近break down很多次</span></li><li class="wish-item"><span class="wish-box"></span><span>君问归期未有期</span></li>
+            </ul>
+        </div>
+<div class="bar reveal" id="contactBar" data-block="contacts">
+            <div class="bar-head">
+                <span class="bar-label">联系方式</span>
+                <a class="bar-more ripple" href="/pages/%E8%81%94%E7%B3%BB%E6%96%B9%E5%BC%8F/">详情 →</a>
+            </div>
+            <div class="contact-list">
+                
+                <button class="contact-item ripple" type="button" data-copy="&lt;built-in method copy of dict object at 0x00000286BDD5FDC0&gt;"><span class="contact-k">Naver</span><span class="contact-v">后面挂，我今天naver爆safe protect了</span></button>
+                
+                
+                <a class="contact-item ripple" href="https://github.com/emmmluxin" target="_blank" rel="noreferrer"><span class="contact-k">GitHub</span><span class="contact-v">github.com/emmmluxin ↗</span></a>
+                
+                
+                <button class="contact-item ripple" type="button" data-copy="&lt;built-in method copy of dict object at 0x00000286BDD5FE80&gt;"><span class="contact-k">即时联系</span><span class="contact-v"></span></button>
+                
+                
+            </div>
+        </div>
+<section class="bar bar-hitokoto reveal" id="hitokotoBar" data-block="hitokoto">
+            <div class="bar-head">
+                <span class="bar-label">一言</span>
+                <div class="bar-right">
+                    <button class="bar-action ripple" id="hitokotoNext" type="button">换一句</button>
+                </div>
+            </div>
+            <blockquote class="hitokoto-body" id="hitokotoBody">
+                <p class="hitokoto-text" id="hitokotoText">人生如逆旅，我亦是行人。</p>
+                <cite class="hitokoto-from" id="hitokotoFrom">—— 苏轼《临江仙·送钱穆父》</cite>
+            </blockquote>
+        </section>
+
+    </aside>
+
+        </div>
+        
+    <div id="hiddenPool" hidden>
+
+    </div>
+
+        <footer class="footer reveal">© 2026 鼠的博客</footer>
+    </div>
+    <div class="fab">
+        <button class="fab-btn ripple" id="themeToggle" type="button" title="切换深色/浅色"></button>
+        
+        <button class="fab-btn ripple" id="menu" type="button" title="显示/隐藏侧栏">☰</button>
+
+    </div>
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    
+    <script>const NOTES = [["\u6210\u529f\u4eba\u548c\u5931\u8d25\u4eba\uff0c\u6211\u7684\u4e00\u4e9b\u770b\u6cd5", 1795056433], ["\u6027\u53d6\u5411\u4e8c\u4e09\u4e8b", 1795056011], ["\u6240\u8c13\u5b66\u9738\uff0c\u771f\u662f\u6b7b\u5988", 1795053550], ["update", 1795052993], ["\u5173\u4e8e\u6cbb\u7597\u5931\u7720\u7684\u5386\u7a0b", 1795052899], ["\u8fd9\u4e48\u591a\u6076\u5fc3\u7684\u4e8b\u60c5\u548c\u4eba\u554a", 1795051715], ["\u72ec\u884c\u4e5f\u5982\u4f17\uff1f", 1795051289], ["idk", 1795050527], ["Hello World", 1795050122]];const CLOCK = {"slots": [{"end": 7.5, "label": "\u7761\u7720\u4f11\u606f", "mood": "\u79bb\u7ebf\u5145\u7535\u4e2d", "start": 0, "tone": "rest"}, {"end": 9, "label": "\u65e9\u95f4\u5524\u9192", "mood": "\u521a\u9192 / \u5403\u65e9\u996d", "start": 7.5, "tone": "wake"}, {"end": 12, "label": "\u4e0a\u5348\u4e13\u6ce8", "mood": "\u5199\u4ee3\u7801 / \u5b66\u4e60", "start": 9, "tone": "focus"}, {"end": 14, "label": "\u5348\u95f4\u5c0f\u61a9", "mood": "\u5348\u996d\u4e0e\u4f11\u606f", "start": 12, "tone": "break"}, {"end": 18.5, "label": "\u4e0b\u5348\u521b\u4f5c", "mood": "\u6298\u817e\u9879\u76ee / \u5199\u4e1c\u897f", "start": 14, "tone": "focus"}, {"end": 23.5, "label": "\u591c\u95f4\u81ea\u7531", "mood": "\u542c\u6b4c / \u6563\u6b65 / \u6478\u9c7c", "start": 18.5, "tone": "chill"}, {"end": 24, "label": "\u51c6\u5907\u7761\u89c9", "mood": "\u5173\u706f\u915d\u917f\u7761\u610f", "start": 23.5, "tone": "rest"}], "timezone_label": "UTC+8"};const MUSIC = [{"artist": "Vocaloid", "note": "", "tag": "slow", "title": "\u5076\u5c14\u542c\u4e00\u4e9blofi"}, {"artist": "\u521d\u97f3", "note": "", "tag": "\u98ce\u683c", "title": "\u679c\u4ec1\u7cd6"}];const HITOKOTO = [{"from": "\u82cf\u8f7c\u300a\u4e34\u6c5f\u4ed9\u00b7\u9001\u94b1\u7a46\u7236\u300b", "text": "\u4eba\u751f\u5982\u9006\u65c5\uff0c\u6211\u4ea6\u662f\u884c\u4eba\u3002"}, {"from": "\u738b\u7ef4\u300a\u7ec8\u5357\u522b\u4e1a\u300b", "text": "\u884c\u5230\u6c34\u7a77\u5904\uff0c\u5750\u770b\u4e91\u8d77\u65f6\u3002"}, {"from": "\u738b\u52c3\u300a\u6ed5\u738b\u9601\u5e8f\u300b", "text": "\u843d\u971e\u4e0e\u5b64\u9e5c\u9f50\u98de\uff0c\u79cb\u6c34\u5171\u957f\u5929\u4e00\u8272\u3002"}, {"from": "\u8303\u4ef2\u6df9\u300a\u5cb3\u9633\u697c\u8bb0\u300b", "text": "\u4e0d\u4ee5\u7269\u559c\uff0c\u4e0d\u4ee5\u5df1\u60b2\u3002"}, {"from": "\u9676\u6e0a\u660e\u300a\u5f52\u53bb\u6765\u516e\u8f9e\u300b", "text": "\u609f\u5df2\u5f80\u4e4b\u4e0d\u8c0f\uff0c\u77e5\u6765\u8005\u4e4b\u53ef\u8ffd\u3002"}, {"from": "\u82cf\u8f7c\u300a\u540e\u8d64\u58c1\u8d4b\u300b", "text": "\u5c71\u9ad8\u6708\u5c0f\uff0c\u6c34\u843d\u77f3\u51fa\u3002"}, {"from": "\u61d2\u5f97\u627e\u51fa\u5904", "text": "\u9001\u541b\u5343\u91cc\uff0c\u7ec8\u987b\u4e00\u522b"}];</script>
+    <script src="/assets/pangu.min.js"></script>
+    <script src="/assets/index.js?v=1795057758"></script>
+
+    <script src="/assets/app.js?v=1795057758"></script>
+</body>
+</html>
